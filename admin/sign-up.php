@@ -1,6 +1,5 @@
 <?php
 include_once('admin-inc/header-ii.php');
-// include header
 // form validation
 $empty = [];
 if(isset($_POST['submit'])){

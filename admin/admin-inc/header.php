@@ -1,4 +1,5 @@
 <?php
+// dynamic URL
     function siteUrl(){
         $uri = explode('/',$_SERVER['REQUEST_URI']);
         $protocol = explode('/',$_SERVER['SERVER_PROTOCOL']);

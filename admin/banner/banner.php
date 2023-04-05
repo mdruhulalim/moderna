@@ -1,5 +1,17 @@
 <?php
+session_start();
+if(!isset($_SESSION['username'])){
+    header('Location: sign-in.php');
+}
 include_once('../admin-inc/header.php');
+// database connect
+include_once('../database-connect.php');
+// select query
+$query="SELECT `ID`, `title`, `description`, `btn_text`, `btn_link`, `photo`, `status` FROM `banners`";
+$rejult=mysqli_query($conn,$query);
+if(mysqli_num_rows($rejult)){
+    $datas=mysqli_fetch_all($rejult,true);
+}
 ?>
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
     <div class="mt-5">
@@ -22,6 +34,27 @@ include_once('../admin-inc/header.php');
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
+                            <?php
+                            // showing data
+                                foreach($datas as $key => $data){
+                                    ?>
+                                    <tr>
+                                        <th><?=++$key?></th>
+                                        <th><?=$data['title'];?></th>
+                                        <th><?=substr($data['description'], 0, 20). '...'?></th>
+                                        <th><?=$data['btn_text'];?></th>
+                                        <th><?=$data['btn_link'];?></th>
+                                        <th><?=$data['photo'];?></th>
+                                        <th><?=$data['status'];?></th>
+                                        <th>
+                                            <!-- update and delete -->
+                                            <a class="badge badge-primary d-inline-block" href="update-banner.php?ID=<?=$data['ID'];?>">Update</a>
+                                            <a class="badge badge-danger d-inline-block" href="delete-banner.php?ID=<?=$data['ID'];?>" onclick="return confirm('Are you sure?')">Delete</a>
+                                        </th>
+                                    </tr>
+                                    <?php
+                                }
+                                ?>
                         </table>
                     </div>
                 </div>

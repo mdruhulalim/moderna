@@ -1,34 +1,36 @@
+<?php
+include_once('admin/database-connect.php');
+// insert banner data
+$query="SELECT `ID`, `title`, `description`, `btn_text`, `btn_link`, `photo`, `status` FROM `banners` WHERE status = 1";
+$rejult=mysqli_query($conn,$query);
+if(mysqli_num_rows($rejult)){
+    $datas=mysqli_fetch_all($rejult,true);
+}
+
+?>
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="d-flex justify-cntent-center align-items-center">
         <div id="heroCarousel" class="container carousel carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
 
-        <!-- Slide 1 -->
-        <div class="carousel-item active">
+        <?php
+        foreach($datas as $key => $data){
+        ?>
+        <div class="carousel-item <?= $key == 0 ? 'active' : ''?>">
             <div class="carousel-container">
-            <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Moderna</span></h2>
-            <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-            <a href="" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
+            <h2 class="animate__animated animate__fadeInDown"><?=$data['title']?></h2>
+            <p class="animate__animated animate__fadeInUp"><?=$data['description']?></p>
+            <?php
+            if($data['btn_text']){
+                ?>
+                 <a href="<?=$data['btn_link']?>" class="btn-get-started animate__animated animate__fadeInUp"><?=$data['btn_text']?></a>
+                <?php
+                }
+            ?>
             </div>
         </div>
-
-        <!-- Slide 2 -->
-        <div class="carousel-item">
-            <div class="carousel-container">
-            <h2 class="animate__animated animate__fadeInDown">Lorem Ipsum Dolor</h2>
-            <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-            <a href="" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
-            </div>
-        </div>
-
-        <!-- Slide 3 -->
-        <div class="carousel-item">
-            <div class="carousel-container">
-            <h2 class="animate__animated animate__fadeInDown">Sequi ea ut et est quaerat</h2>
-            <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-            <a href="" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
-            </div>
-        </div>
-
+        <?php
+        }
+        ?>
         <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
             <span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>
         </a>

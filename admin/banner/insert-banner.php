@@ -1,4 +1,5 @@
 <?php
+// session_start();
 include_once('../admin-inc/header.php');
 ?>
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
@@ -11,9 +12,17 @@ include_once('../admin-inc/header.php');
                         <a class="btn-primary btn" href="<?=siteUrl()?>admin/banner/banner.php">All Banner</a>
                     </div>
                     <div class="card-body">
-                        <form action="">
+                        <form action="<?=siteUrl()?>admin/banner/banner-action.php" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <input class="form-control" type="text" placeholder="Title" name="title">
+                                <?php
+                                // print error massage for title
+                                if(isset($_SESSION['banner_title_error'])){
+                                    ?>
+                                    <p class="text-danger"><?=$_SESSION['banner_title_error']?></p>
+                                    <?php
+                                }
+                                ?>
                             </div>
                             <div class="form-group">
                                 <textarea class="form-control" placeholder="Description" name="description"></textarea>
@@ -26,6 +35,14 @@ include_once('../admin-inc/header.php');
                             </div>
                             <div class="form-group">
                                 <input class="" type="file"  name="photo">
+                                <?php
+                                // print error massage for photo
+                                if(isset($_SESSION['banner_photo_error'])){
+                                    ?>
+                                    <p class="text-danger"><?=$_SESSION['banner_photo_error']?></p>
+                                    <?php
+                                }
+                                ?>
                             </div>
                             <div class="form-group">
                                 <input class="form-control btn btn-success" type="submit"  name="submit" value="Submit">
@@ -39,4 +56,5 @@ include_once('../admin-inc/header.php');
 </main>
 <?php
 include_once('../admin-inc/footer.php');
+session_unset();
 ?>

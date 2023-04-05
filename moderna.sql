@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 31, 2023 at 07:24 PM
+-- Generation Time: Apr 05, 2023 at 12:49 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -40,7 +40,8 @@ CREATE TABLE `admin_user` (
 
 INSERT INTO `admin_user` (`ID`, `username`, `email`, `password`) VALUES
 (4, 'xohufupitu', 'kijacepyky@mailinator.com', '81dc9bdb52d04dc20036dbd8313ed055'),
-(5, 'RuhulRonny', 'RuhulRonny@gmail.com', '06eac4d209dab4702e2b348266222955');
+(5, 'RuhulRonny', 'RuhulRonny@gmail.com', '06eac4d209dab4702e2b348266222955'),
+(6, 'sajeneqaq', 'sajeneqaq@mailinator.com', 'f9e7f50093bf7f9286726247eb8900c1');
 
 -- --------------------------------------------------------
 
@@ -51,12 +52,20 @@ INSERT INTO `admin_user` (`ID`, `username`, `email`, `password`) VALUES
 CREATE TABLE `banners` (
   `ID` int(11) NOT NULL,
   `title` varchar(100) NOT NULL,
-  `description` text NOT NULL,
-  `btn_text` varchar(30) NOT NULL,
-  `btn_link` varchar(50) NOT NULL,
+  `description` text DEFAULT NULL,
+  `btn_text` varchar(30) DEFAULT NULL,
+  `btn_link` varchar(50) DEFAULT NULL,
   `photo` varchar(100) NOT NULL,
   `status` int(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `banners`
+--
+
+INSERT INTO `banners` (`ID`, `title`, `description`, `btn_text`, `btn_link`, `photo`, `status`) VALUES
+(19, 'Ut eu exercitationem', 'asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfa\r\nsdfasdfasdfasdfasdfasdfasdfasdfasdf\r\nasdfasdfasdfasdfasdfasdfasdfasdfasdf', '', 'rrrr', '642c1356eb813_mdruhulalim2.png', 1),
+(28, 'Commodo a suscipit n', 'Aut assumenda quisqu', 'Atque quisquam duis', 'Ut blanditiis dolore', '642c0dd2dac7e_profice picture.jpg', 1);
 
 --
 -- Indexes for dumped tables
@@ -82,13 +91,13 @@ ALTER TABLE `banners`
 -- AUTO_INCREMENT for table `admin_user`
 --
 ALTER TABLE `admin_user`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `banners`
 --
 ALTER TABLE `banners`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
