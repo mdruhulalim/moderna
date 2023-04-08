@@ -77,6 +77,12 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="<?=siteUrl()?>admin/service/services.php">
+                <span data-feather="file"></span>
+                Services
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="#">
                 <span data-feather="shopping-cart"></span>
                 Products

@@ -15,8 +15,8 @@ if(isset($_POST['submit'])){
     $description = trim(htmlentities($_POST['description']));
     $btn_text = trim(htmlentities($_POST['btn_text']));
     $btn_link= trim(htmlentities($_POST['btn_link']));
-    $photo = $_FILES['photo'];
-    $photo_name = $photo['name'];
+    $photo = $_FILES['photo']['tmp_name'];
+    $photo_name = $_FILES['photo']['name'];
 
     if(empty($title)){
         $_SESSION['banner_title_error'] = "Inter title";
@@ -28,9 +28,9 @@ if(isset($_POST['submit'])){
     if(!empty($title) && !empty($photo_name)){
         include_once('../database-connect.php');
         // Generate a unique name for the file to avoid filename collisions
-        $photoName = uniqid() . "_" . $photo['name'];
+        $photoName = uniqid() . "_" . $photo_name;
         // Move the uploaded file to the banner-image folder
-        move_uploaded_file($photo['tmp_name'], siteUrl(). 'upload/banner/' . $photoName);
+        move_uploaded_file($photo, $_SERVER['DOCUMENT_ROOT']. '/mordarna/admin/banner/upload/banner/' . $photoName);
 
         // Insert query
         $query = "INSERT INTO `banners`(`title`, `description`, `btn_text`, `btn_link`, `photo`) 

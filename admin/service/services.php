@@ -7,7 +7,7 @@ include_once('../admin-inc/header.php');
 // database connect
 include_once('../database-connect.php');
 // select query
-$query="SELECT `ID`, `title`, `description`, `btn_text`, `btn_link`, `photo`, `status` FROM `banners`";
+$query="SELECT * FROM `service`";
 $rejult=mysqli_query($conn,$query);
 if(mysqli_num_rows($rejult)){
     $datas=mysqli_fetch_all($rejult,true);
@@ -19,8 +19,8 @@ if(mysqli_num_rows($rejult)){
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <h2>All Banners</h2>
-                        <a class="btn-primary btn" href="<?=siteUrl()?>admin/banner/insert-banner.php">Insert Banner</a>
+                        <h2>All Services</h2>
+                        <a class="btn-primary btn" href="<?=siteUrl()?>admin/service/insert-service.php">Insert Services</a>
                     </div>
                     <div class="card-body">
                         <table class="table">
@@ -28,9 +28,6 @@ if(mysqli_num_rows($rejult)){
                                 <th>ID</th>
                                 <th>Title</th>
                                 <th>Description</th>
-                                <th>Button text</th>
-                                <th>Button link</th>
-                                <th>Photo</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -42,11 +39,6 @@ if(mysqli_num_rows($rejult)){
                                         <th><?=++$key?></th>
                                         <th><?=$data['title'];?></th>
                                         <th><?=substr($data['description'], 0, 20). '...'?></th>
-                                        <th><?=$data['btn_text'];?></th>
-                                        <th><?=$data['btn_link'];?></th>
-                                        <th>
-                                            <img width="80px" class="img-fluid" src="upload/banner/<?=$data['photo']?>" alt="<?=$data['title'];?>">
-                                        </th>
                                         <th><?=$data['status'];?></th>
                                         <th>
                                             <!-- update and delete -->
