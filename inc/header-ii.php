@@ -1,73 +1,66 @@
-<?php
-    function siteUrl(){
-        $uri = explode('/',$_SERVER['REQUEST_URI']);
-        $protocol = explode('/',$_SERVER['SERVER_PROTOCOL']);
-        echo strtolower($protocol['0'].'://'.$_SERVER['SERVER_NAME'].'/'.$uri['1'].'/');
-    }
-?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Services - Moderna Bootstrap Template</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
+  <title>Services - Moderna Bootstrap Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
 
-    <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon">
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i&display=swap" rel="stylesheet">
 
-    <!-- Vendor CSS Files -->
-    <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-    <!-- Template Main CSS File -->
-    <link href="assets/css/style.css" rel="stylesheet">
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
 
-    <!-- =======================================================
-    * Template Name: Moderna
-    * Updated: Mar 10 2023 with Bootstrap v5.2.3
-    * Template URL: https://bootstrapmade.com/free-bootstrap-template-corporate-moderna/
-    * Author: BootstrapMade.com
-    * License: https://bootstrapmade.com/license/
-    ======================================================== -->
-    </head>
+  <!-- =======================================================
+  * Template Name: Moderna
+  * Updated: Mar 10 2023 with Bootstrap v5.2.3
+  * Template URL: https://bootstrapmade.com/free-bootstrap-template-corporate-moderna/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
 
-    <body>
+<body>
 
-    <!-- ======= Header ======= -->
-    <header id="header" class="fixed-top d-flex align-items-center ">
-        <div class="container d-flex justify-content-between align-items-center">
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center ">
+    <div class="container d-flex justify-content-between align-items-center">
 
-        <div class="logo">
-        <h1 class="text-light"><a href="<?=siteUrl()?>index.php"><span>Moderna</span></a></h1>
-            <!-- Uncomment below if you prefer to use an image logo -->
-            <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-        </div>
+      <div class="logo">
+        <h1 class="text-light"><a href="index.html"><span>Moderna</span></a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      </div>
 
-        <nav id="navbar" class="navbar">
-            <ul>
-            <li><a class="" href="<?=siteUrl()?>index.php">Home</a></li>
-            <li><a href="<?=siteUrl()?>about.php">About</a></li>
-            <li><a href="<?=siteUrl()?>services.php">Services</a></li>
-            <li><a href="<?=siteUrl()?>portfolio.php">Portfolio</a></li>
-            <li><a href="<?=siteUrl()?>team.php">Team</a></li>
-            <li><a href="<?=siteUrl()?>blog.php">Blog</a></li>
-            <li><a href="<?=siteUrl()?>contact.php">Contact Us</a></li>
-            </ul>
-            <i class="bi bi-list mobile-nav-toggle"></i>
-        </nav><!-- .navbar -->
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="" href="index.php">Home</a></li>
+          <li><a href="about.php">About</a></li>
+          <li><a href="services.php">Services</a></li>
+          <li><a href="portfolio.php">Portfolio</a></li>
+          <li><a href="team.php">Team</a></li>
+          <li><a href="blog.php">Blog</a></li>
+          <li><a href="contact.php">Contact Us</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
 
-        </div>
-    </header><!-- End Header -->
+    </div>
+  </header><!-- End Header -->

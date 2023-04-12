@@ -1,68 +1,92 @@
 <?php
+// include header
+include('../admin-inc/header.php');
+// include site menu
+include('../admin-inc/site-menu.php');
+// get banner ID
 $ID = $_GET['ID'];
-// database connect
-include_once('../database-connect.php');
-// get recent value
 // include database
-include_once('../database-connect.php');
-// select query
-$query="SELECT `ID`, `title`, `description`, `btn_text`, `btn_link`, `photo`, `status` FROM `banners` WHERE ID = $ID";
-$rejult=mysqli_query($conn,$query);
-if(mysqli_num_rows($rejult)){
-    $datas=mysqli_fetch_assoc($rejult);
+include('../db.php');
+// get banner value
+$query = "SELECT * FROM `banner` WHERE ID = '$ID'";
+$datas = mysqli_query($conn, $query);
+if(mysqli_num_rows($datas)>0){
+    $datas=mysqli_fetch_assoc($datas);
 }
-
-// form action
+// update banner value
 if(isset($_POST['submit'])){
     $title = trim(htmlentities($_POST['title']));
-    $description = trim(htmlentities($_POST['description']));
-    $btn_text = trim(htmlentities($_POST['btn_text']));
-    $btn_link= trim(htmlentities($_POST['btn_link']));
-    $photo = $_FILES['photo'];
-    $photo_name = $photo['name'];
-
-    // Generate a unique name for the file to avoid filename collisions
-    $photoName = uniqid() . "_" . $photo['name'];
-    // Move the uploaded file to the banner-image folder
-    move_uploaded_file($file['tmp_name'], 'admin/banner/banner-image/' . $photoName);
-
+    $description =trim(htmlentities($_POST['description']));
+    $btn_text =trim(htmlentities($_POST['btn_text']));
+    $btn_link =trim(htmlentities($_POST['btn_link']));
+    
     // update query
-    $query = "UPDATE `banners` SET `title`='$title',`description`='$description',`btn_text`='$btn_text',`btn_link`='$btn_link',`photo`='$photoName' WHERE ID = $ID";
-    $rejult = mysqli_query($conn, $query);
-    if($rejult){
-        header('Location: banner.php');
+    $query = "UPDATE `banner` SET `title`='$title',`description`='$description',`btn_text`='$btn_text',`btn_link`='$btn_link' WHERE ID = '$ID'";
+    $result = mysqli_query($conn, $query);
+    if($result){
+        $success = "Succesfully update data";
     }
 }
-// include header
-include_once('../admin-inc/header.php');
 ?>
-<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
     <div class="mt-5">
         <div class="row">
             <div class="col-lg-10">
                 <div class="card">
                     <div class="card-header">
-                        <h2>Update Banners</h2>
+                        <h2>Update banner information</h2>
+                        <?php
+                        if(isset($success)){
+                            ?>
+                            <p class="text-success"><?=$success?></p>
+                            <?php
+                        }
+                        ?>
                     </div>
                     <div class="card-body">
-                        <form action="" method="post" enctype="multipart/form-data">
+                    <form method="post">
                             <div class="form-group">
-                                <input class="form-control" type="text" placeholder="Title" value="<?=$datas['title']?>" name="title">
+                                <input class="form-control" type="text" placeholder="Title" name="title" value="<?=$datas['title']?>">
+                                <?php
+                                if(isset($error['update_banner_title'])){
+                                    ?>
+                                    <p class="text-danger"><?=$error['update_banner_title']?></p>
+                                    <?php
+                                }
+                                ?>
                             </div>
-                            <div class="form-group">
-                                <textarea class="form-control" placeholder="Description" name="description"><?=$datas['description'];?></textarea>
+                            <div class="form-group mt-3">
+                                <textarea class="form-control" placeholder="Description" name="description"><?=$datas['description']?></textarea>
+                                <?php
+                                if(isset($error['update_banner_description'])){
+                                    ?>
+                                    <p class="text-danger"><?=$error['update_banner_description']?></p>
+                                    <?php
+                                }
+                                ?>
                             </div>
-                            <div class="form-group">
-                                <input class="form-control" type="text" placeholder="Button text" value="<?=$datas['btn_text']?>"  name="btn_text">
+                            <div class="form-group mt-3">
+                                <input class="form-control" type="text" placeholder="Button text" name="btn_text" value="<?=$datas['btn_text']?>">
+                                <?php
+                                if(isset($error['update_banner_btn_text'])){
+                                    ?>
+                                    <p class="text-danger"><?=$error['update_banner_btn_text']?></p>
+                                    <?php
+                                }
+                                ?>
                             </div>
-                            <div class="form-group">
-                                <input class="form-control" type="text" placeholder="Button link" value="<?=$datas['btn_link']?>"  name="btn_link">
+                            <div class="form-group mt-3">
+                                <input class="form-control" type="text" placeholder="Button link" name="btn_link" value="<?=$datas['btn_link']?>">
+                                <?php
+                                if(isset($error['update_banner_btn_link'])){
+                                    ?>
+                                    <p class="text-danger"><?=$error['update_banner_btn_link']?></p>
+                                    <?php
+                                }
+                                ?>
                             </div>
-                            <div class="form-group">
-                                <input class="" type="file" value="<?=$datas['photo']?>"   name="photo">
-                            </div>
-                            <div class="form-group">
-                                <input class="form-control btn btn-success" type="submit"  name="submit" value="Submit">
+                            <div class="form-group mt-3">
+                                <input class="form-control btn btn-success" type="submit"  name="submit" value="Update">
                             </div>
                         </form>
                     </div>
@@ -72,6 +96,5 @@ include_once('../admin-inc/header.php');
     </div>
 </main>
 <?php
-include_once('../admin-inc/footer.php');
-session_unset();
-?>
+// include footer
+include('../admin-inc/footer.php');

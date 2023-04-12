@@ -1,9 +1,12 @@
 <?php
-    function siteUrl(){
-        $uri = explode('/',$_SERVER['REQUEST_URI']);
-        $protocol = explode('/',$_SERVER['SERVER_PROTOCOL']);
-        echo strtolower($protocol['0'].'://'.$_SERVER['SERVER_NAME'].'/'.$uri['1'].'/');
-    }
+// session start
+session_start();
+// dynaminc URL
+function siteUrl(){
+    $uri = explode('/',$_SERVER['REQUEST_URI']);
+    $protocol = explode('/',$_SERVER['SERVER_PROTOCOL']);
+    echo strtolower($protocol['0'].'://'.$_SERVER['SERVER_NAME'].'/'.$uri['1'].'/');
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -20,12 +23,12 @@
     
 
     <!-- Bootstrap core CSS -->
-<link href="<?=siteUrl()?>admin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?=siteUrl()?>admin/css/bootstrap.min.css" rel="stylesheet">
 
 
-<meta name="msapplication-config" content="/docs/4.6/assets/img/favicons/browserconfig.xml">
-<meta name="theme-color" content="#563d7c">
+    <meta name="msapplication-config" content="/docs/4.6/assets/img/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#563d7c">
 
-<link href="<?=siteUrl()?>admin/css/style.css" rel="stylesheet">
+    <link href="<?=siteUrl()?>admin/css/dashboard.css" rel="stylesheet">
 </head>
 <body>

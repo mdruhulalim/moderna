@@ -1,17 +1,45 @@
 <?php
-include('inc/header.php');
-// include header
-include('inc/banner.php');
-// include banner
+require_once('inc/header.php');
+// add banner
+require_once('inc/banner.php');
 ?>
+
   <main id="main">
 
     <?php
-    include_once('inc/services.php');
-    // include service section
-    include_once('inc/way-us.php');
-    // include way-us
+    // add service section
+    require_once('inc/service.php');
     ?>
+
+    <!-- ======= Why Us Section ======= -->
+    <section class="why-us section-bg" data-aos="fade-up" date-aos-delay="200">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-6 video-box">
+            <img src="assets/img/why-us.jpg" class="img-fluid" alt="">
+            <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></a>
+          </div>
+
+          <div class="col-lg-6 d-flex flex-column justify-content-center p-5">
+
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-fingerprint"></i></div>
+              <h4 class="title"><a href="">Lorem Ipsum</a></h4>
+              <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+            </div>
+
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-gift"></i></div>
+              <h4 class="title"><a href="">Nemo Enim</a></h4>
+              <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Why Us Section -->
 
     <!-- ======= Features Section ======= -->
     <section class="features">
@@ -94,5 +122,6 @@ include('inc/banner.php');
     </section><!-- End Features Section -->
 
   </main><!-- End #main -->
+
 <?php
-include('inc/footer.php');
+require_once('inc/footer.php');

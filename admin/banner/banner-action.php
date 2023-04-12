@@ -1,7 +1,8 @@
 <?php
+// session start
 session_start();
 if(!isset($_SESSION['username'])){
-    header('Location: sign-in.php');
+    header('Location: ../user/sign-in.php');
 }
 // dynamic URL
 function siteUrl(){
@@ -10,34 +11,41 @@ function siteUrl(){
     return strtolower($protocol['0'].'://'.$_SERVER['SERVER_NAME'].'/'.$uri['1'].'/');
 }
 // form action
+$error = [];
 if(isset($_POST['submit'])){
     $title = trim(htmlentities($_POST['title']));
     $description = trim(htmlentities($_POST['description']));
     $btn_text = trim(htmlentities($_POST['btn_text']));
     $btn_link= trim(htmlentities($_POST['btn_link']));
-    $photo = $_FILES['photo']['tmp_name'];
-    $photo_name = $_FILES['photo']['name'];
 
+    // check empty field
     if(empty($title)){
-        $_SESSION['banner_title_error'] = "Inter title";
+        $_SESSION['banner_title_error'] = $error['banner_title_error'] = "Inter title";
     }
-    if(empty($photo_name)){
-        $_SESSION['banner_photo_error'] = "Select a photo";
+    if(empty($description)){
+        $_SESSION['banner_description_error'] = $error['banner_description_error'] = "Type description";
+    }
+    if(empty($btn_text)){
+        $_SESSION['banner_btn_text_error'] = $error['banner_btn_text_error'] = "Please type button text here";
+    }
+    if(empty($btn_link)){
+        $_SESSION['banner_btn_link_error'] = $error['banner_btn_link_error'] = "Please type button link here";
     }
 
-    if(!empty($title) && !empty($photo_name)){
-        include_once('../database-connect.php');
-        // Generate a unique name for the file to avoid filename collisions
-        $photoName = uniqid() . "_" . $photo_name;
-        // Move the uploaded file to the banner-image folder
-        move_uploaded_file($photo, $_SERVER['DOCUMENT_ROOT']. '/mordarna/admin/banner/upload/banner/' . $photoName);
-
+    if(empty($error)){
+        // include database
+        include('../db.php');
         // Insert query
-        $query = "INSERT INTO `banners`(`title`, `description`, `btn_text`, `btn_link`, `photo`) 
-        VALUES ('$title','$description','$btn_text','$btn_link','$photoName')";
+        $query = "INSERT INTO `banner`(`title`, `description`, `btn_text`, `btn_link`) 
+        VALUES ('$title','$description','$btn_text','$btn_link')";
         $rejult = mysqli_query($conn, $query);
-        header('Location: banner.php');
+        if($rejult){
+            $_SESSION['banner_insrt_success'] = "Successfully insert your banner information";
+            // redirect banner page
+            header('Location: banner.php');
+        }
     }else{
+        // redirect insert-banner page
         header('Location: insert-banner.php');
     }
 }

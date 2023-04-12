@@ -3,7 +3,7 @@
 $servername = "localhost";
 $uname = "root"; // default username for XAMPP
 $password = ""; // default password for XAMPP
-$dbname = "moderna";
+$dbname = "moderna_ii";
 
 // Create connection
 $conn = mysqli_connect($servername, $uname, $password, $dbname);

@@ -8,8 +8,8 @@ if(!isset($_SESSION['username'])){
 include_once('../db.php');
 // delete query
 $id = $_GET['ID'];
-$query = "DELETE FROM `banner` WHERE ID = $id";
+$query = "DELETE FROM `services` WHERE ID = $id";
 $rejult = mysqli_query($conn, $query);
 if($rejult){
-    header('Location: banner.php');
+    header('Location: service.php');
 }
