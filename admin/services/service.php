@@ -14,7 +14,7 @@ if(mysqli_num_rows($rejult)){
 ?>
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <div class="mt-5">
+    <div class="mt-2">
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">

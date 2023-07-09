@@ -12,8 +12,8 @@ require_once('inc/header-II.php');
           <h2>Blog</h2>
 
           <ol>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="blog.html">Blog</a></li>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="blog.php">Blog</a></li>
             <li>Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam quia reiciendis</li>
           </ol>
         </div>

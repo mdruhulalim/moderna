@@ -22,9 +22,9 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="<?=siteUrl()?>admin/why-us/why-us.php">
               <span data-feather="users" class="align-text-bottom"></span>
-              Customers
+              Why us
             </a>
           </li>
           <li class="nav-item">
